@@ -1,1 +1,21 @@
-You can check the docs over [here](https://dapd007.github.io/v-calendar-scheduler/)
+# v-calendar-scheduler
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
