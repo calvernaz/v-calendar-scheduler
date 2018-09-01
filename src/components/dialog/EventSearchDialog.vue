@@ -11,7 +11,7 @@
                     <!-- Search input -->
                     <nav class="panel">
                         <div class="control has-icons-left has-icons-right">
-                            <input class="input is-medium" type="email" placeholder="Search for menu">
+                            <input v-model="filteredMenu" class="input is-medium" type="email" placeholder="Search for menu">
                             <span class="icon is-left">
                             <font-awesome-icon icon="search"/>
                                 <!--<i class="fas fa-envelope"></i>-->
@@ -22,7 +22,7 @@
                         </div>
                         <div class="listWrap">
                             <virtual-list :size="40" :remain="8" class="list">
-                                <item v-for="(item, index) of menuItems" :menuItem="item" :key="index"
+                                <item v-for="(item, index) of filteredMenus" :menuItem="item" :key="index"
                                       class="menu-item" v-on:menuSelected="isMenuActive = true"/>
                             </virtual-list>
                         </div>
@@ -67,10 +67,18 @@
                 }, 150)
             }
         },
+        computed: {
+            filteredMenus() {
+                return this.menuItems.filter((element) => {
+                    return element.title.toLowerCase().match(this.filteredMenu.toLowerCase());
+                });
+            }
+        },
         data() {
             return {
                 isActive: true,
-                isMenuActive: false
+                isMenuActive: false,
+                filteredMenu: ''
             }
         },
         beforeMount() {
